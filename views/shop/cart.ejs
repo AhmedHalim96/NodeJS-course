@@ -2,5 +2,26 @@
     </head>
 
     <body>
-        <%- include('../includes/navigation.ejs') %>
+
+                <%- include('../includes/navigation.ejs') %>
         <%- include('../includes/end.ejs') %>
+        <h2>Total Price: <%=cart.totalPrice%>$ </h2>
+        <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 1rem; ">
+            <% cart.products.forEach( product => {
+ %> 
+        <div style="display: flex; flex-direction: column; gap: 1;">
+            <img src="<%=product.imageUrl%>" alt="<%=product.title%>" width="auto" height="100px" > 
+
+           <div style="display: flex; align-items: center; gap: 1rem;">
+             <h3><%=product.title%></h3> 
+              <strong>(<%=product.qty%>) </>
+            </div>  
+            <form action="/remove-from-cart/<%=product.id%>" method="post" >
+                <button>Remove from Cart</button>
+            </form>
+        </div>
+        <%     });  %> 
+        </div>
+        <ul>
+        </ul>
+        
